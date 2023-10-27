@@ -2,8 +2,10 @@ import cv2
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 import itertools
 SEED =12
+IMAGE_PATH = "D:\\Downloads\\COVID_Data\\test\\"
 def load_labels(label_file):
     """Loads image filenames, classes, and bounding boxes"""
     fnames, classes, bboxes = [], [], []
@@ -13,7 +15,7 @@ def load_labels(label_file):
             fnames.append(fname)
             classes.append(int(cls))
             bboxes.append((int(xmin), int(ymin), int(xmax), int(ymax)))
-    fnames = ["C:\project\data\\2A_images\\" + fname for fname in fnames]
+    fnames = [IMAGE_PATH + fname for fname in fnames]
     fnames = np.array(fnames)
     classes = np.array(classes)
     return fnames, classes, bboxes
