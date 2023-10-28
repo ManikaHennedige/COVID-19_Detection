@@ -3,8 +3,16 @@ import App.utils.load as load
 from App.utils.predict import predict_model
 from flask import jsonify, request
 
+"""
+    File containing routes for a simple webserver that should be run on the DR Environment.
+    Documentation reference: https://docs.datarobot.com/en/docs/mlops/deployment/custom-models/custom-model-environments/custom-environments.html
+"""
+
 @app.route('/', methods=['GET'])
 def home():
+    """
+        Mandatory DataRobot endpoint to check if the environment is running
+    """
     response = {'response': 'success'}
     return jsonify(response, 200)
 
@@ -17,6 +25,9 @@ def upload():
 
 @app.route('/predict', methods=['GET'])
 def predict():
+    """
+        Mandatory DataRobot endpoint for making predictions
+    """
     image_folder = "App\\received\\images\\"
     label_filename = "App\\received\\labels\\test.txt"
 
